@@ -17,9 +17,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::All();
-
+        // $posts = User::find(auth()->id()->user_id());
+        // $posts = Post::with('user')->get()->toarray();
+        $posts = User::find(1)->posts->toArray();
+        // $posts = Post::with('user')->find( Auth::user()->id );
         // dd($posts);
+
+
         return view('posts.index',compact('posts'));
     }
 
@@ -30,7 +34,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        
+        $user = auth()->id();
+// dd($user);
+        return view('posts.create',compact('user'));
     }
 
     /**
@@ -43,6 +49,7 @@ class PostController extends Controller
     {
 
         $posts = Post::create([
+            'user_id' => $request->user_id,
             'good' => $request->good,
             'bad' => $request->bad,
             'goal' => $request->goal,
@@ -57,17 +64,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $id)
+    public function show($id)
     {
-        $user = User::find($id->id); //idが、リクエストされた$userのidと一致するuserを取得
-        $posts = Post::select('id','good','bad','goal') //$userによる投稿を取得
-            ->orderBy('created_at', 'desc') // 投稿作成日が新しい順に並べる
-            ->paginate(10); // ページネーション; 
-            // dd($posts,$user);
-        return view('posts.show', compact('user','posts'));
-    //     $showPosts = Post::select('good','bad','goal')->get();
-
-    //     return view('posts.show' ,compact('showPosts'));
+        // $user = User::find($user->id);
+        // $showPosts = Post::where()
     }
 
     /**

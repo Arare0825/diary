@@ -11,11 +11,11 @@ class Post extends Model
 
     public function user()
     {
-        return $this->hasMany('App\Models\User');
+        return $this->belongsTo('App\Models\User');
         
     }
 
-    protected $fillable = ['good','bad','goal']; //保存したいカラム名が複数の場合
+    protected $fillable = ['user_id','good','bad','goal']; //保存したいカラム名が複数の場合
 
 
 }
