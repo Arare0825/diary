@@ -19,12 +19,13 @@ class PostController extends Controller
     {
         // $posts = User::find(auth()->id()->user_id());
         // $posts = Post::with('user')->get()->toarray();
-        $posts = User::find(1)->posts->toArray();
+        $posts = User::find(Auth()->id())->posts->toArray();
         // $posts = Post::with('user')->find( Auth::user()->id );
         // dd($posts);
+        $user = User::find(Auth()->id());
+// dd($user->name);
 
-
-        return view('posts.index',compact('posts'));
+        return view('posts.index',compact('posts','user'));
     }
 
     /**
