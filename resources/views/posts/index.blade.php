@@ -17,9 +17,6 @@
             </div>
         </div>
     </div>
-    <!-- <form method="get" action="{{route('posts.show', auth()->user()->id) }}">
-      <button type="submit">簿ターン</button> -->
-    <!-- </form> -->
     <br>
 
     <div class="flex flex-col">
@@ -59,7 +56,7 @@
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{$post['created_at']}}</td>
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                <a href="{{route('posts.edit',$post['id'])}}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
               </td>
             </tr>
             @endforeach

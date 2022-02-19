@@ -59,17 +59,6 @@ class PostController extends Controller
         return redirect(route('posts.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        // $user = User::find($user->id);
-        // $showPosts = Post::where()
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -77,9 +66,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($post)
     {
-        //
+
+        $posts = Post::find($post)->toArray();
+// dd($posts['id']);
+        return view('posts.edit',compact('posts'));
     }
 
     /**
@@ -91,7 +83,16 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $posts = Post::findOrFail($id);
+            $posts->user_id = $request->user_id;
+            $posts->good = $request->good;
+            $posts->bad = $request->bad;
+            $posts->goal = $request->goal;
+            // dd($posts,$id);
+        $posts->save();
+        
+
+        return redirect()->route('posts.index');
     }
 
     /**
