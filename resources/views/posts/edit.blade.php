@@ -30,10 +30,25 @@
               <div class="px-8 py-12 text-right sm:px-6">
             <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">保存</button>
           </div>
-</div>
+
 <input type="hidden" name="user_id" value="{{ $posts['user_id']}}">
+</form>
+<form method="post" id="delete_{{$posts['id']}}" action="{{ route('posts.destroy',['post'=>$posts['id']]) }}">
+  @csrf
+  @method('delete')
+<div class="flex justify-center px-8 py-12 sm:px-6">
+<a href="#" data-id="{{ $posts['id']}}" button onclick="deletePost(this)"  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">削除</a>
 </div>
 </form>
-
+</div>
+</div>
+<script>
+function deletePost(e){
+  'use strict';
+  if(confirm('本当に削除してもいいですか？')){
+    document.getElementById('delete_' + e.dataset.id).submit();
+  }
+}
+  </script>
 
 </x-app-layout>
