@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>3行日記</title>
 
         <!-- Fonts -->
         <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"> -->
@@ -33,7 +33,7 @@ html, body, .container {
 }
 
 .overlay {
-  max-height: 200px;
+  max-height: 300px;
   margin: 0 auto;
   max-width: 768px;
   overflow: hidden;
@@ -77,7 +77,7 @@ html, body, .container {
             <div class="overlay">
 
     <h1>三行日記とは</h1>
-    <p>今日1日のよかった事、悪かった事、明日の目標を決めることにより、自律神経を整えてくれる効果があると言われています。</p>
+    <p>今日1日のよかった事、悪かった事、明日の目標を決めることにより、自律神経を整えてくれる効果があると言われています。<br>早速始めてみましょう！</p>
   </div>
 </div>
     </body>

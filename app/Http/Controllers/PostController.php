@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -33,6 +35,7 @@ class PostController extends Controller
      */
     public function create()
     {
+
         $user = auth()->id();
 // dd($user);
         return view('posts.create',compact('user'));
@@ -45,9 +48,10 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         // dd($request);
+
 
         $posts = Post::create([
             'user_id' => $request->user_id,
@@ -90,7 +94,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
         $posts = Post::findOrFail($id);
             $posts->user_id = $request->user_id;

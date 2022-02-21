@@ -10,6 +10,7 @@
         @csrf
         @method('PUT')
         <div class="shadow overflow-hidden sm:rounded-md">
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
           <div class="px-4 py-5 bg-white sm:p-6">
           <div class="col-span-6 sm:col-span-3">
                 <label for="first-name" class="block text-sm font-medium text-gray-700">日付</label>
