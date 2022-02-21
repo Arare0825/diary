@@ -15,7 +15,7 @@ class Post extends Model
         
     }
 
-    protected $fillable = ['user_id','good','bad','goal']; //保存したいカラム名が複数の場合
+    protected $fillable = ['user_id','date','good','bad','goal']; //保存したいカラム名が複数の場合
 
 
 }

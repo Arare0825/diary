@@ -16,18 +16,21 @@ class PostSeeder extends Seeder
     {
         DB::table('posts')->insert([[
        'user_id' => 1,
+       'date' => 2022_02_21,
        'good' => 'いいこと',
        'bad' => '悪いこと',
        'goal' => '目標'
         ],
         [
         'user_id' => 2,
+        'date' => 2022_02_21,
         'good' => 'いいこと',
         'bad' => '悪いこと',
         'goal' => '目標'
         ],
         [
             'user_id' => 1,
+            'date' => 2022_02_21,
             'good' => 'いいこと',
             'bad' => '悪いこと',
             'goal' => '目標'

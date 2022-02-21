@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             ->constrained()
             ->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->date('date');
             $table->string('good');
             $table->string('bad');
             $table->string('goal');

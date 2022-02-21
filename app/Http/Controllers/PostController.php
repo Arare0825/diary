@@ -40,6 +40,7 @@ class PostController extends Controller
         return view('posts.create',compact('user'));
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -48,9 +49,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
 
         $posts = Post::create([
             'user_id' => $request->user_id,
+            'date' => $request->date,
             'good' => $request->good,
             'bad' => $request->bad,
             'goal' => $request->goal,
@@ -60,6 +63,14 @@ class PostController extends Controller
     }
 
 
+    public function show($post)
+    {
+                $posts = Post::find($post)->toArray();
+// dd($posts['id']);
+        return view('posts.show',compact('posts'));
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -68,7 +79,7 @@ class PostController extends Controller
      */
     public function edit($post)
     {
-
+// dd($post);
         $posts = Post::find($post)->toArray();
 // dd($posts['id']);
         return view('posts.edit',compact('posts'));
@@ -85,6 +96,7 @@ class PostController extends Controller
     {
         $posts = Post::findOrFail($id);
             $posts->user_id = $request->user_id;
+            $posts->date = $request->date;
             $posts->good = $request->good;
             $posts->bad = $request->bad;
             $posts->goal = $request->goal;

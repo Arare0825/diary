@@ -19,13 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::resource('posts',PostController::class)->middleware('auth');
+Route::resource('posts',PostController::class)->middleware('auth');
 
 // Route::resource('posts', PostController::class, ['except' => ['show']])->middleware('auth');
 
-Route::resource('posts', PostController::class,
- ['only' => ['index','create','store','edit','update','destroy']])
-->middleware('auth');
+// Route::resource('posts', PostController::class,
+//  ['only' => ['index','create','store','edit','update','destroy']])
+// ->middleware('auth');
 
 
 Route::get('/dashboard', function () {
