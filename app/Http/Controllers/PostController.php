@@ -17,13 +17,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        // $posts = User::find(auth()->id()->user_id());
-        // $posts = Post::with('user')->get()->toarray();
-        $posts = User::find(Auth()->id())->posts->toArray();
-        // $posts = Post::with('user')->find( Auth::user()->id );
-        // dd($posts);
+        // $posts = User::find(Auth()->id())->posts->paginate(15);
         $user = User::find(Auth()->id());
-// dd($user->name);
+
+       $posts = Post::where('user_id',Auth::id())->orderBy('date','desc')->paginate(15);
+// dd($posts);
 
         return view('posts.index',compact('posts','user'));
     }

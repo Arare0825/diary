@@ -39,16 +39,17 @@
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">{{$post['date']}}</div>
+                    <div class="text-sm font-medium text-gray-900">{{$post->date}}</div>
                   </div>
               <td class="px-6 py-4 whitespace-nowrap">
-                <span class="text-sm font-medium text-gray-900"> {{$post['goal']}} </span>
+                <span class="text-sm font-medium text-gray-900"> {{$post->goal}} </span>
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <a href="{{route('posts.show',$post['id'])}}" class="text-indigo-600 hover:text-indigo-900">詳細</a>
               </td>
             </tr>
             @endforeach
+            {{ $posts->links() }}
 
             <!-- More people... -->
           </tbody>
