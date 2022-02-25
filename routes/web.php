@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +22,17 @@ Route::get('/', function () {
 
 Route::resource('posts',PostController::class)->middleware('auth');
 
-// Route::resource('posts', PostController::class, ['except' => ['show']])->middleware('auth');
+//ソーシャルログイン
+Route::prefix('login/{provider}')->where(['provider'=>'(line|github)'])->group(function(){
+    Route::get('/','App\Http\Controllers\Auth\LoginController@redirectToProvider')->name('social_login.redirect');
+    Route::get('callback','App\Http\Controllers\Auth\LoginController@handleProviderCallBack')->name('social_login.callback');
+});
 
-// Route::resource('posts', PostController::class,
-//  ['only' => ['index','create','store','edit','update','destroy']])
-// ->middleware('auth');
 
+// Route::prefix('login')->name('login.')->group(function() {
+//     Route::get('/line/redirect', [LoginController::class, 'redirectToProvider'])->name('line.redirect');
+//     Route::get('/line/callback', [LoginController::class, 'handleProviderCallback'])->name('line.callback');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -1,9 +1,11 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
+            <div class="w-28">
             <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
+            </div>
         </x-slot>
 
         <!-- Session Status -->
@@ -17,14 +19,14 @@
 
             <!-- Email Address -->
             <div>
-                <x-label for="email" :value="__('Email')" />
+                <x-label for="email" value="メールアドレス" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                <x-label for="password" value="パスワード" />
 
                 <x-input id="password" class="block mt-1 w-full"
                                 type="password"
@@ -48,9 +50,22 @@
                 @endif
 
                 <x-button class="ml-3">
-                    {{ __('Login') }}
+                    ログイン
                 </x-button>
             </div>
+            <hr class="my-3">
+<div class="mt-3">
+    <h3>アプリでのログイン</h3>
+    <div class="my-2">
+        <a href="{{ route('social_login.redirect', 'line') }}">
+            <img style="height:50px" src="/images/LINE_APP.png">
+        </a>
+    </div>
+    <small>
+        本ウェブサービスでは、LINEによる認証ページで許可を得た場合のみメールアドレスを取得します。<br>
+        そして、取得されたメールアドレスにつきましては本サービスのログイン以外の目的には一切使用しません。
+    </small>
+</div>
         </form>
     </x-auth-card>
 </x-guest-layout>

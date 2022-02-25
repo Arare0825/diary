@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -17,13 +19,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        // $posts = User::find(auth()->id()->user_id());
-        // $posts = Post::with('user')->get()->toarray();
-        $posts = User::find(Auth()->id())->posts->toArray();
-        // $posts = Post::with('user')->find( Auth::user()->id );
-        // dd($posts);
+        // $posts = User::find(Auth()->id())->posts->paginate(15);
         $user = User::find(Auth()->id());
-// dd($user->name);
+
+       $posts = Post::where('user_id',Auth::id())->orderBy('date','desc')->paginate(15);
+// dd($posts);
 
         return view('posts.index',compact('posts','user'));
     }
@@ -35,6 +35,7 @@ class PostController extends Controller
      */
     public function create()
     {
+
         $user = auth()->id();
 // dd($user);
         return view('posts.create',compact('user'));
@@ -47,9 +48,10 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         // dd($request);
+
 
         $posts = Post::create([
             'user_id' => $request->user_id,
@@ -66,8 +68,9 @@ class PostController extends Controller
     public function show($post)
     {
                 $posts = Post::find($post)->toArray();
-// dd($posts['id']);
-        return view('posts.show',compact('posts'));
+                $user = User::find(Auth()->id());
+// dd($user->name);
+        return view('posts.show',compact('posts','user'));
 
     }
 
@@ -92,7 +95,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
         $posts = Post::findOrFail($id);
             $posts->user_id = $request->user_id;
