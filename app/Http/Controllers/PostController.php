@@ -68,8 +68,9 @@ class PostController extends Controller
     public function show($post)
     {
                 $posts = Post::find($post)->toArray();
-// dd($posts['id']);
-        return view('posts.show',compact('posts'));
+                $user = User::find(Auth()->id());
+// dd($user->name);
+        return view('posts.show',compact('posts','user'));
 
     }
 

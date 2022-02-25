@@ -33,7 +33,8 @@
                 <input type="text" name="goal" value="{{$posts['goal']}}" id="email-address" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               </div>
               <div class="px-8 py-12 text-right sm:px-6">
-            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">保存</button>
+              <button type="button" class="mr-6 inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick="history.back()">戻る</button> 
+            <button type="submit" class="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-400 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">保存</button>
           </div>
 
 <input type="hidden" name="user_id" value="{{ $posts['user_id']}}">
@@ -42,7 +43,7 @@
   @csrf
   @method('delete')
 <div class="flex justify-center px-8 py-12 sm:px-6">
-<a href="#" data-id="{{ $posts['id']}}" button onclick="deletePost(this)"  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">削除</a>
+<a href="#" data-id="{{ $posts['id']}}" button onclick="deletePost(this)"  class="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">削除</a>
 </div>
 </form>
 </div>
