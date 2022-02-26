@@ -8,8 +8,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="overflow-hidden sm:rounded-lg">
+                <div class="p-6">
                   <div class="text-right">
                 <a href="{{ route('posts.create')}}" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">今日の日記を作成</a>
                 </div>
@@ -19,12 +19,11 @@
     </div>
     <br>
 
-    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+      <div class="shadow overflow-hidden border-b border-gray-400 sm:rounded-lg">
         <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-100">
+          <thead class="bg-gray-300">
             <tr>
               <th scope="col-4" class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">日付</th>
               <th scope="col-4" class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">明日の目標</th>
@@ -57,6 +56,5 @@
       </div>
     </div>
   </div>
-</div>
 </x-app-layout>
 
