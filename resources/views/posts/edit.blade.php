@@ -1,8 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-             さん、こんにちは<br>
-            今日の日記を追加しましょう！
+            日記を編集してください。
         </h2>
     </x-slot>
 
